@@ -9,7 +9,7 @@ const port = 5000;
 mongoose.connect("mongodb://localhost:27017/blog");
 
 app.get("/", (req, res) => {
-	res.sendFile(path.join(__dirname + "/client/index.html"));
+	res.sendFile(path.join(__dirname + "/client/public/index.html"));
 });
 
 app.get("/data", async (req, res) => {
@@ -17,7 +17,7 @@ app.get("/data", async (req, res) => {
 	res.json(articles);
 });
 
-app.use(express.static(path.resolve(__dirname, "client", "public")));
+app.use(express.static("client"));
 
 app.listen(port, () => {
 	console.log(`App started on port ${port}`);
